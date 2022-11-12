@@ -16,5 +16,5 @@ PATCH http://localhost:3000/reports/6
 content-type: application/json
 
 {
-  "approved": true
+  "approved": false
 }
