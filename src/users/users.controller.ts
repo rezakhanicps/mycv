@@ -42,18 +42,12 @@ export class UsersController {
 
   @Post('/signout')
   signout(@Session() session: any) {
-    if (!session) {
-      session = {};
-    }
     session.userId = null;
   }
 
   @Post('/signup')
   async createUser(@Body() body: CreateUserDto, @Session() session: any) {
     const user = this.authService.signup(body.email, body.password);
-    if (!session) {
-      session = {};
-    }
     session.userId = (await user).id;
     return user;
   }
@@ -61,9 +55,6 @@ export class UsersController {
   @Post('/signin')
   async signin(@Body() body: CreateUserDto, @Session() session: any) {
     const user = this.authService.signin(body.email, body.password);
-    if (!session) {
-      session = {};
-    }
     session.userId = (await user).id;
     return user;
   }
